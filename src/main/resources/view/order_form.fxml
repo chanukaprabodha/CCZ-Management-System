@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="orderForm" prefHeight="768.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ccz.controller.OrderFormController">
+   <children>
+      <ScrollPane layoutX="9.0" layoutY="12.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="551.0" AnchorPane.topAnchor="17.0">
+         <content>
+            <AnchorPane prefHeight="734.0" prefWidth="523.0" stylesheets="@../designs/mainFormDesign.css">
+               <styleClass>
+                  <String fx:value="white-bg" />
+                  <String fx:value="shadow" />
+                  <String fx:value="radius" />
+               </styleClass>
+               <children>
+                  <AnchorPane layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.leftAnchor="20.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnVanillaOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <TextField fx:id="txtVanilla" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <ImageView layoutX="83.0" layoutY="35.0">
+                           <image>
+                              <Image url="@../icons/icons8-lemon-cake-64.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="55.0" layoutY="7.0" prefHeight="21.0" prefWidth="119.0" text="Vanilla Base (1kg)" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="46.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="273.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.rightAnchor="30.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="35.0" layoutY="10.0" prefHeight="21.0" prefWidth="151.0" text="Chocolate Base (1kg)">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView layoutX="78.0" layoutY="40.0">
+                           <image>
+                              <Image url="@../icons/icons8-double-chocolate-cake-64.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtChocolate" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnChocolateOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="273.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.leftAnchor="273.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="50.0" layoutY="11.0" prefHeight="21.0" prefWidth="151.0" text="Cupcakes (6pacs.)">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView layoutX="82.0" layoutY="43.0">
+                           <image>
+                              <Image url="@../icons/icons8-cup-cake-64.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtcupcakes" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnCupcakeOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="273.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.rightAnchor="30.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="60.0" layoutY="10.0" prefHeight="21.0" prefWidth="100.0" text="Coloring (dos.)">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="64.0" fitWidth="81.0" layoutX="70.0" layoutY="50.0">
+                           <image>
+                              <Image url="@../icons/icons8-wine-bottle-96.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtcoloring" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnColoringOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="14.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.leftAnchor="20.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="60.0" layoutY="11.0" prefHeight="21.0" prefWidth="100.0" text="Essence (dos.)">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="64.0" fitWidth="94.0" layoutX="78.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/icons8-shake-gently-100.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtEssence" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEssenceOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="273.0" layoutY="572.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.rightAnchor="30.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="83.0" layoutY="8.0" prefHeight="21.0" prefWidth="74.0" text="Icing (dos.)">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtIcing" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnIcingOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="70.0" layoutY="36.0">
+                           <image>
+                              <Image url="@../icons/icons8-icing-96.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="20.0" layoutY="577.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.leftAnchor="20.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="83.0" layoutY="8.0" prefHeight="21.0" prefWidth="55.0" text="Toppers">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtTopper" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnTopperOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <ImageView fitHeight="69.0" fitWidth="74.0" layoutX="74.0" layoutY="44.0">
+                           <image>
+                              <Image url="@../icons/icons8-confetti-80.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="20.0" layoutY="763.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.rightAnchor="283.0">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="83.0" layoutY="8.0" prefHeight="21.0" prefWidth="55.0" text="Packing">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="64.0" fitWidth="94.0" layoutX="78.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/icons8-cake-box-64.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtPacking" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnPackingOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="20.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css">
+                     <styleClass>
+                        <String fx:value="card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="35.0" layoutY="10.0" prefHeight="21.0" prefWidth="151.0" text="Coffee Base (1kg)">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtCoffe" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnCoffeeOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <ImageView layoutX="75.0" layoutY="42.0">
+                           <image>
+                              <Image url="@../icons/icons8-cake-64.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <AnchorPane layoutX="551.0" layoutY="17.0" prefHeight="734.0" prefWidth="523.0" stylesheets="@../designs/mainFormDesign.css" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="17.0">
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="shadow" />
+            <String fx:value="radius" />
+         </styleClass>
+         <children>
+            <Label layoutX="7.0" layoutY="63.0" stylesheets="@../designs/mainFormDesign.css" text="Order Id:" AnchorPane.leftAnchor="7.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrderId" layoutX="84.0" layoutY="63.0" prefHeight="21.0" prefWidth="119.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblOrder" layoutX="13.0" layoutY="149.0" onMouseClicked="#menuSelectOrder" prefHeight="249.0" prefWidth="295.0" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="149.0">
+               <columns>
+                  <TableColumn fx:id="colRecipe" minWidth="98.3" prefWidth="163.8" text="Recipes" />
+                  <TableColumn fx:id="colQuantity" prefWidth="163.8" text="Quantity" />
+                  <TableColumn fx:id="colPrice" prefWidth="163.8" text="Price" />
+               </columns>
+            </TableView>
+            <Label layoutX="178.0" layoutY="579.0" text="Total: " AnchorPane.bottomAnchor="134.0" AnchorPane.rightAnchor="304.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotal" layoutX="219.0" layoutY="579.0" prefHeight="21.0" prefWidth="127.0" text="Rs 0.0" AnchorPane.bottomAnchor="134.0" AnchorPane.rightAnchor="177.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnConfirm" layoutX="16.0" layoutY="454.0" mnemonicParsing="false" onAction="#btnConfirmOnAction" prefHeight="41.0" prefWidth="290.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Confirm" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Button fx:id="btnRemove" layoutX="106.0" layoutY="679.0" mnemonicParsing="false" onAction="#btnRemoveOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="106.0" />
+            <Button fx:id="btnReceipt" layoutX="173.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnReceiptOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Receipt" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
+            <Label layoutX="7.0" layoutY="23.0" text="Order date:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblOrderDate" layoutX="107.0" layoutY="23.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="270.0" layoutY="39.0" text="Customer :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="396.0" layoutY="80.0" onAction="#btnNewCustomerOnAction" prefHeight="30.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="New" textFill="WHITE" AnchorPane.topAnchor="80.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </JFXButton>
+            <TextField fx:id="txtSearchMobile" layoutX="354.0" layoutY="37.0" promptText="Add Customer Mobile" stylesheets="@../designs/mainFormDesign.css" AnchorPane.topAnchor="37.0">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="radius" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+            </TextField>
+            <JFXButton buttonType="RAISED" layoutX="296.0" layoutY="80.0" onAction="#btnSearchOnAction" prefHeight="30.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Search" textFill="WHITE" AnchorPane.topAnchor="80.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <padding>
+                  <Insets left="16.0" />
+               </padding>
+            </JFXButton>
+            <ImageView fitHeight="14.0" fitWidth="17.0" layoutX="409.0" layoutY="88.0">
+               <image>
+                  <Image url="@../icons/icons8-plus-30.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="300.0" layoutY="82.0">
+               <image>
+                  <Image url="@../icons/icons8-search-64.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="9.0" layoutY="102.0" text="Customer Id:" AnchorPane.leftAnchor="7.0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCustomerId" layoutX="107.0" layoutY="104.0" stylesheets="@../designs/mainFormDesign.css" AnchorPane.leftAnchor="107.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
