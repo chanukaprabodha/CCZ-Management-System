@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class Order_Repo {
     public static String currentId() throws SQLException {
-            String sql = "SELECT orderId FROM orders ORDER BY orderId desc LIMIT 1";
+            String sql = "SELECT orderId FROM orders ORDER BY CAST(SUBSTRING(orderId, 2) AS UNSIGNED) DESC LIMIT 1";
 
             Connection connection = DbConnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
@@ -36,8 +36,8 @@ public class Order_Repo {
 
     public static boolean save(Order order) throws SQLException {
         String sql = "INSERT INTO orders VALUES(?, ?, ?, ?)";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
         pstm.setString(1, order.getOrderId());
         pstm.setDate(2, (Date) order.getOrderDate());
         pstm.setString(3, order.getCustomerID());

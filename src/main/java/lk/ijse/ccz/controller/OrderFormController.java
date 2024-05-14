@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import lk.ijse.ccz.model.*;
 import lk.ijse.ccz.model.tm.OrderTm;
 import lk.ijse.ccz.reopsitory.*;
+import lk.ijse.ccz.util.SendMail;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
+import static lk.ijse.ccz.util.SendMail.customerMailAddress;
+import static lk.ijse.ccz.util.SendMail.customerName;
 
 public class OrderFormController {
 
@@ -132,11 +135,10 @@ public class OrderFormController {
         private String nextId(String currentId) {
                 if (currentId != null) {
                         String[] split = currentId.split("O");
-                        int id = parseInt(split[1]);    //2
-                        return "O" + ++id;
-
+                        int id = Integer.parseInt(split[1], 10);    //2
+                        return"O"+ ++id;
                 }
-                return "O1";
+                return "01";
         }
 
         private void calculateNetTotal() {
@@ -257,7 +259,6 @@ public class OrderFormController {
                 txtIcing.clear();
         }
 
-
         @FXML
         void btnConfirmOnAction(ActionEvent event) throws SQLException {
 
@@ -282,25 +283,39 @@ public class OrderFormController {
                         odList.add(od);
                 }
 
+                customerName = Customer_Repo.getCustomerName(cusId);
+
+                customerMailAddress = Customer_Repo.getCustomerEmail(cusId);
+
                 ConfirmOrder po = new ConfirmOrder(order, odList);
 
                 try {
                         boolean isPlaced = ConfirmOrder_Repo.placeOrder(po);
-                        if(isPlaced) {
+                        if (isPlaced) {
                                 new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
-                                sendMAil(cusId);
                                 tblOrder.getItems().clear();
-                                cmbCustomerId.getSelectionModel().clearSelection();
+                                lblCustomerId.setText("");
+                                txtSearchMobile.clear();
+                                lblTotal.setText("0");
+                                
+                                SendMail sendMail = new SendMail();
+
+                                sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
+                                        "\tThank you for shopping with us. " +
+                                        "\tYour order is confirmed. " +
+                                        "\tWe'll let you know when your order is ready\n" +
+                                        "\n\tOrder Details:\n\n" +
+                                        "\t\t✅  Placed on :  " + date + "\n\n" +
+                                        "\t\t✅  Order ID :  " + orderId + "\n\n" +
+                                        "\t\t✅  Total Amount :  " + totalAmount + "\n" +
+                                        "\n\n\tSent with ❤️ from CCZ.\n\n");
+
                         } else {
                                 new Alert(Alert.AlertType.WARNING, "order not placed!").show();
                         }
-                } catch (SQLException e) {
+                } catch(Exception e){
                         new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
                 }
-        }
-
-        private void sendMAil(String cusId) {
-                //Customer_Repo.getCustomerEmali(cusId);
         }
 
         @FXML
@@ -323,7 +338,8 @@ public class OrderFormController {
 
         @FXML
         void btnRemoveOnAction(ActionEvent event) {
-
+                tblOrder.getItems().clear();
+                lblTotal.setText("0");
         }
 
         @FXML

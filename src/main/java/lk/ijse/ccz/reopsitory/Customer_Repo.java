@@ -29,8 +29,7 @@ public class Customer_Repo {
     public static boolean update(Customer customer) throws SQLException {
         String sql = "UPDATE customer SET name = ?,email = ?, address = ?, phone = ? WHERE Customerid = ?";
 
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
         pstm.setObject(1, customer.getName());
         pstm.setObject(2, customer.getEmail());
@@ -95,7 +94,7 @@ public class Customer_Repo {
 
         PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
-        pstm.setObject(1, mobile);
+        pstm.setString(1, mobile);
 
         ResultSet resultSet = pstm.executeQuery();
 
@@ -113,6 +112,33 @@ public class Customer_Repo {
 
         if(resultSet.next()) {
             return resultSet.getString(1).toCharArray();
+        }
+        return null;
+    }
+
+    public static String getCustomerName(String cusId) throws SQLException {
+        String sql = "SELECT name FROM customer WHERE customerId = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setString(1, cusId);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
+        }
+
+        return null;
+    }
+
+    public static String getCustomerEmail(String cusId) throws SQLException {
+        String sql = "SELECT email FROM customer WHERE customerId = ?";
+
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setString(1, cusId);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if (resultSet.next()) {
+            return resultSet.getString(1);
         }
         return null;
     }
