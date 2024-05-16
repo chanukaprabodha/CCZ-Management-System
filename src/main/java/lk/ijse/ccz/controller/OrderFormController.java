@@ -1,7 +1,6 @@
 package lk.ijse.ccz.controller;
 
 import com.jfoenix.controls.JFXComboBox;
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,22 +8,35 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import lk.ijse.ccz.db.DbConnection;
 import lk.ijse.ccz.model.*;
 import lk.ijse.ccz.model.tm.OrderTm;
 import lk.ijse.ccz.reopsitory.*;
 import lk.ijse.ccz.util.SendMail;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
 import static lk.ijse.ccz.util.SendMail.customerMailAddress;
@@ -125,7 +137,6 @@ public class OrderFormController {
                 try {
                         String currentId = Order_Repo.currentId();
                         String nextId = nextId(currentId);
-
                         lblOrderId.setText(nextId);
                 } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -134,11 +145,16 @@ public class OrderFormController {
 
         private String nextId(String currentId) {
                 if (currentId != null) {
-                        String[] split = currentId.split("O");
-                        int id = Integer.parseInt(split[1], 10);    //2
-                        return"O"+ ++id;
+                        String regex = "^\\D*(\\d+)$";
+                        Pattern pattern = Pattern.compile(regex);
+                        Matcher matcher = pattern.matcher(currentId);
+                        int id = 1;
+                        if (matcher.find()) {
+                                id = Integer.parseInt(matcher.group(1)) + 1;
+                        }
+                        return "O" + String.format("%04d", id);
                 }
-                return "01";
+                return "O0001";
         }
 
         private void calculateNetTotal() {
@@ -297,19 +313,19 @@ public class OrderFormController {
                                 lblCustomerId.setText("");
                                 txtSearchMobile.clear();
                                 lblTotal.setText("0");
+                                loadNextOrderId();
                                 
-                                SendMail sendMail = new SendMail();
-
-                                sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
-                                        "\tThank you for shopping with us. " +
-                                        "\tYour order is confirmed. " +
-                                        "\tWe'll let you know when your order is ready\n" +
-                                        "\n\tOrder Details:\n\n" +
-                                        "\t\t✅  Placed on :  " + date + "\n\n" +
-                                        "\t\t✅  Order ID :  " + orderId + "\n\n" +
-                                        "\t\t✅  Total Amount :  " + totalAmount + "\n" +
-                                        "\n\n\tSent with ❤️ from CCZ.\n\n");
-
+//                                SendMail sendMail = new SendMail();
+//
+//                                sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
+//                                        "\tThank you for shopping with us. " +
+//                                        "\tYour order is confirmed. " +
+//                                        "\tWe'll let you know when your order is ready\n" +
+//                                        "\n\tOrder Details:\n\n" +
+//                                        "\t\t✅  Placed on :  " + date + "\n\n" +
+//                                        "\t\t✅  Order ID :  " + orderId + "\n\n" +
+//                                        "\t\t✅  Total Amount :  " + totalAmount + "\n" +
+//                                        "\n\n\tSent with ❤️ from CCZ.\n\n");
                         } else {
                                 new Alert(Alert.AlertType.WARNING, "order not placed!").show();
                         }
@@ -332,7 +348,24 @@ public class OrderFormController {
         }
 
         @FXML
-        void btnReceiptOnAction(ActionEvent event) {
+        void btnprintLableOnAction(ActionEvent event) throws JRException, SQLException {
+                JasperDesign jasperDesign =
+                        JRXmlLoader.load("src/main/resources/Report/kitchenLabel.jrxml");
+                JasperReport jasperReport =
+                        JasperCompileManager.compileReport(jasperDesign);
+
+                String orderId = Order_Repo.getMostRecentOrderId();
+
+                Map<String, Object> parameter = new HashMap<>();
+                parameter.put("orderId", orderId);
+
+                JasperPrint jasperPrint =
+                        JasperFillManager.fillReport(
+                                jasperReport,
+                                parameter,
+                                DbConnection.getInstance().getConnection());
+
+                JasperViewer.viewReport(jasperPrint,false);
 
         }
 

@@ -116,4 +116,13 @@ public class Order_Repo {
         return 0;
     }
 
+    public static String getMostRecentOrderId() throws SQLException {
+        String sql = "select orderId from orders order by orderId desc limit 1";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()){
+            return resultSet.getString(1);
+        }
+        return null ;
+    }
 }

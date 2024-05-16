@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="orderForm" prefHeight="768.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ccz.controller.OrderFormController">
+<AnchorPane fx:id="orderForm" prefHeight="768.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ccz.controller.OrderFormController">
    <children>
       <ScrollPane layoutX="9.0" layoutY="12.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="551.0" AnchorPane.topAnchor="17.0">
          <content>
@@ -246,7 +240,7 @@
             </Label>
             <Button fx:id="btnConfirm" layoutX="16.0" layoutY="454.0" mnemonicParsing="false" onAction="#btnConfirmOnAction" prefHeight="41.0" prefWidth="290.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Confirm" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Button fx:id="btnRemove" layoutX="106.0" layoutY="679.0" mnemonicParsing="false" onAction="#btnRemoveOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="106.0" />
-            <Button fx:id="btnReceipt" layoutX="173.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnReceiptOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Receipt" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
+            <Button fx:id="btnprintLable" layoutX="173.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnprintLableOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Print Label" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
             <Label layoutX="7.0" layoutY="23.0" text="Order date:">
                <font>
                   <Font name="System Bold" size="15.0" />
