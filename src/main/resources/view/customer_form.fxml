@@ -41,7 +41,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtName" layoutX="140.0" layoutY="115.0" prefHeight="25.0" prefWidth="168.0" promptText="Frist &amp; Last Name">
+            <TextField fx:id="txtName" layoutX="140.0" layoutY="115.0" onKeyReleased="#nameOnKeyReleased" prefHeight="25.0" prefWidth="168.0" promptText="Frist &amp; Last Name">
                <font>
                   <Font size="14.0" />
                </font></TextField>
@@ -50,7 +50,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtAddress" layoutX="534.0" layoutY="115.0" prefHeight="25.0" prefWidth="168.0" promptText="HouseNo,Street,City">
+            <TextField fx:id="txtAddress" layoutX="534.0" layoutY="115.0" onKeyReleased="#addressOnKeyReleased" prefHeight="25.0" prefWidth="168.0" promptText="HouseNo,Street,City">
                <font>
                   <Font size="14.0" />
                </font></TextField>
@@ -63,7 +63,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtEmail" layoutX="534.0" layoutY="39.0" prefHeight="25.0" prefWidth="168.0" promptText="example@gmail.com">
+            <TextField fx:id="txtEmail" layoutX="534.0" layoutY="39.0" onKeyReleased="#emailOnKeyReleased" prefHeight="25.0" prefWidth="168.0" promptText="example@gmail.com">
                <font>
                   <Font size="14.0" />
                </font></TextField>
@@ -72,11 +72,11 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtContact" layoutX="892.0" layoutY="39.0" prefHeight="25.0" prefWidth="128.0" promptText="+94" AnchorPane.rightAnchor="40.0">
+            <TextField fx:id="txtContact" layoutX="892.0" layoutY="39.0" onKeyReleased="#contactOnKeyReleased" prefHeight="25.0" prefWidth="128.0" promptText="+94" AnchorPane.rightAnchor="40.0">
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <TextField fx:id="txtCustomerId" layoutX="140.0" layoutY="39.0" prefHeight="25.0" prefWidth="168.0" promptText="C1234">
+            <TextField fx:id="txtCustomerId" layoutX="140.0" layoutY="39.0" onKeyReleased="#CustomerIdOnKeyReleased" prefHeight="25.0" prefWidth="168.0" promptText="C1234">
                <font>
                   <Font size="14.0" />
                </font>

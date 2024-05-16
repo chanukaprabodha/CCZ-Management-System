@@ -35,7 +35,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtProductID" layoutX="362.0" layoutY="39.0" prefHeight="25.0" prefWidth="128.0">
+            <TextField fx:id="txtProductID" layoutX="362.0" layoutY="39.0" onKeyReleased="#IngredientIdOnKeyReleased" prefHeight="25.0" prefWidth="128.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtProductName" layoutX="359.0" layoutY="115.0" prefHeight="25.0" prefWidth="168.0">
+            <TextField fx:id="txtProductName" layoutX="359.0" layoutY="115.0" onKeyReleased="#IngredientNameOnKeyReleased" prefHeight="25.0" prefWidth="168.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -55,7 +55,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtStock" layoutX="660.0" layoutY="39.0" prefHeight="25.0" prefWidth="168.0" promptText="0">
+            <TextField fx:id="txtStock" layoutX="660.0" layoutY="39.0" onKeyReleased="#stockOnKeyReleased" prefHeight="25.0" prefWidth="168.0" promptText="0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="txtPrice" layoutX="657.0" layoutY="115.0" prefHeight="25.0" prefWidth="168.0" promptText="Rs0.0">
+            <TextField fx:id="txtPrice" layoutX="657.0" layoutY="115.0" onKeyReleased="#priceOnKeyReleased" prefHeight="25.0" prefWidth="168.0" promptText="Rs0.0">
                <font>
                   <Font size="14.0" />
                </font>

@@ -9,10 +9,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.ccz.model.Inventory;
 import lk.ijse.ccz.model.tm.InventoryTm;
 import lk.ijse.ccz.reopsitory.Inventory_Repo;
+import lk.ijse.ccz.util.Regex;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -111,16 +113,18 @@ public class InventoryFormController {
 
         Inventory inventory = new Inventory(id, name, stock, price);
 
-        try {
-            boolean isSaved = Inventory_Repo.save(inventory);
-            if (isSaved){
+        if (isValid()){
+            try {
+                boolean isSaved = Inventory_Repo.save(inventory);
+                if (isSaved){
                     new Alert(Alert.AlertType.CONFIRMATION, "Inventory saved!").show();
-                    loadInventoryTable();
                     clearFields();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        loadInventoryTable();
     }
 
     @FXML
@@ -154,17 +158,18 @@ public class InventoryFormController {
 
         Inventory inventory = new Inventory(id, name, stock, price);
 
-        try {
-            boolean isSaved = Inventory_Repo.update(inventory);
-            if (isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION, "Inventory saved!").show();
-                loadInventoryTable();
-                clearFields();
+        if (isValid()){
+            try {
+                boolean isSaved = Inventory_Repo.update(inventory);
+                if (isSaved){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Inventory saved!").show();
+                    clearFields();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        tblInventory.refresh();
+        loadInventoryTable();
     }
 
     @FXML
@@ -175,6 +180,42 @@ public class InventoryFormController {
         txtProductName.setText(selectedItem.getName());
         txtStock.setText(String.valueOf(selectedItem.getStock()));
         txtPrice.setText(String.valueOf(selectedItem.getPrice()));
+    }
+
+    @FXML
+    void IngredientIdOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.Iid,txtProductID);
+    }
+
+    @FXML
+    void IngredientNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtProductName);
+    }
+
+    @FXML
+    void priceOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.STOCK,txtStock);
+    }
+
+    @FXML
+    void stockOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.PRICE,txtPrice);
+    }
+
+    public boolean isValid() {
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.Iid,txtProductID)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtProductName)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.STOCK,txtStock)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.PRICE,txtPrice)) {
+            return false;
+        }
+        return true;
     }
 
 }

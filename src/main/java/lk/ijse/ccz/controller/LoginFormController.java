@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -204,9 +205,32 @@ public class LoginFormController {
         si_password.requestFocus();
     }
 
-    public boolean isValid(){
-        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.USERNAME,si_userId)) return false;
-        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.PASSWORD,si_password)) return false;
+    @FXML
+    void employeeIdOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.Eid,su_EmployeeId);
+    }
+
+    @FXML
+    void passwordOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.PASSWORD,su_password);
+    }
+
+    @FXML
+    void userIdOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.Uid,su_userID);
+    }
+
+
+    public boolean isValid() {
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.Eid,su_EmployeeId)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.Uid,su_userID)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.PASSWORD,su_password)) {
+            return false;
+        }
         return true;
     }
 }

@@ -9,11 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import lk.ijse.ccz.model.Employee;
 import lk.ijse.ccz.model.tm.EmployeeTm;
 import lk.ijse.ccz.reopsitory.Employee_Repo;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.ccz.util.Regex;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -117,15 +119,16 @@ public class EmployeesFormController {
 
         Employee employee = new Employee(id, name, email,address, contact);
 
-        try {
-            boolean isSaved = Employee_Repo.save(employee);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
-                loadEmployeeTable();
-                clearFields();
+        if(isValid()){
+            try {
+                boolean isSaved = Employee_Repo.save(employee);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
+                    clearFields();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         loadEmployeeTable();
     }
@@ -162,16 +165,18 @@ public class EmployeesFormController {
 
         Employee employee = new Employee(id, name, email,address, contact);
 
-        try {
-            boolean isSaved = Employee_Repo.update(employee);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
-                loadEmployeeTable();
-                clearFields();
+        if (isValid()) {
+            try {
+                boolean isSaved = Employee_Repo.update(employee);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
+                    clearFields();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+        loadEmployeeTable();
     }
 
     private void clearFields() {
@@ -192,6 +197,51 @@ public class EmployeesFormController {
         txtAddress.setText(tm.getAddress());
         txtContact.setText(tm.getContact());
 
+    }
+
+    @FXML
+    void addressOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.ADDRESS,txtAddress);
+    }
+
+    @FXML
+    void contactOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.CONTACT,txtContact);
+    }
+
+
+    @FXML
+    void employeeIdOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.Eid, txtEmployeeId);
+    }
+
+    @FXML
+    void nameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtName);
+    }
+
+    @FXML
+    void positionOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtPosition);
+    }
+
+    public boolean isValid() {
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.Eid,txtEmployeeId)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtName)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtPosition)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.CONTACT,txtContact)) {
+            return false;
+        }
+        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.ADDRESS,txtAddress)) {
+            return false;
+        }
+        return true;
     }
 
 }

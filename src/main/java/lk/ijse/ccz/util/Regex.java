@@ -5,54 +5,46 @@ import java.util.regex.Pattern;
 
 public class Regex {
 
-    public static boolean isTextFieldValid(TextField textField, String text) {
-        String filed = "";
+    private static boolean isTextFieldValid(TextField textField, String text) {
+        String field ="";
 
         switch (textField) {
-            case NAME:
-                filed = "^[A-z|\\\\s]{3,}$";
-                break;
-
             case EMAIL:
-                filed = "^([A-z])([A-z0-9.]){1,}[@]([A-z0-9]){1,10}[.]([A-z]){2,5}$";
+                field = "^([A-z])([A-z0-9.]){1,}[@]([A-z0-9]){1,10}[.]([A-z]){2,5}$";
                 break;
-
-            case CONTACT:
-                filed = "^([+]94{1,3}|[0])([1-9]{2})([0-9]){7}$";
+            case Eid :
+                field = "^[e][0-9]{3}$";
                 break;
-
-            case ADDRESS:
-                filed = "^([A-z0-9]|[-/,.@+]|\\s){4,}$";
+            case CONTACT :
+                field = "^([0])([1-9]{2})([0-9]){7}$";
                 break;
-
+            case Uid:
+                field = "^[u][0-9]{3}$";
+                break;
+            case Cid:
+                field = "^[c][0-9]{3}$";
+                break;
             case STOCK:
-                filed = "^\\d+$";
+                field = "^([0-9]){1,}$";
                 break;
-
             case PRICE:
-                filed = "[0-9](.[0-9]*)?";
+                field = "^([0-9]){1,}$";
                 break;
-
-            case ID:
-                filed = "^[a-zA-Z0-9._-]{3,}$";
+            case Iid:
+                field = "^[i][0-9]{3}$";
                 break;
-
             case PASSWORD:
-                filed = "^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$";
-                break;
-
-            case USERNAME:
-                filed = "^[a-zA-Z0-9._-]{3,}$";
+                field = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
                 break;
         }
 
-        Pattern pattern = Pattern.compile(filed);
+        Pattern pattern = Pattern.compile(field);
 
         if (text != null){
             if (text.trim().isEmpty()){
                 return false;
             }
-        }else {
+        } else {
             return false;
         }
 
@@ -64,15 +56,15 @@ public class Regex {
         return false;
     }
 
-    public static boolean setTextColor(TextField location, javafx.scene.control.TextField textField) {
-        if (Regex.isTextFieldValid(location, textField.getText())) {
 
-            textField.setStyle("-fx-text-fill: White; -fx-background-color: transparent; -fx-border-color: #19460a; -fx-border-width: 0px 0px 2px 0px;");
+    public static boolean setTextColor(TextField location, javafx.scene.control.TextField field){
+        if (isTextFieldValid(location,field.getText())) {
+            field.setStyle("-fx-border-color: blue");
+            return true;
         } else {
-            textField.setStyle("-fx-text-fill: red; -fx-background-color: transparent; -fx-border-color: #19460a; -fx-border-width: 0px 0px 2px 0px;");
-
+            field.setStyle("-fx-border-color: red");
             return false;
         }
-        return false;
     }
+
 }
