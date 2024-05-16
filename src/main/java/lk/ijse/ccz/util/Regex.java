@@ -36,6 +36,12 @@ public class Regex {
             case PASSWORD:
                 field = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
                 break;
+            case NAME:
+                field = "^[A-z][A-z0-9.]{1,}$";
+                break;
+            case ADDRESS:
+                field = "^[A-z][A-z0-9.]{1,}$";
+                break;
         }
 
         Pattern pattern = Pattern.compile(field);

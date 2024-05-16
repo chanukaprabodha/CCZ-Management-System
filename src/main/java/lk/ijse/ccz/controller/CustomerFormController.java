@@ -149,11 +149,11 @@ public class CustomerFormController {
             boolean isDeleted = Customer_Repo.delete(id);
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
-                loadCustomerTable();
                 clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            System.out.println(e);
         }
         loadCustomerTable();
     }

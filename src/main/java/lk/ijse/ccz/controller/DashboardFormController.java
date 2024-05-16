@@ -9,6 +9,9 @@ import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -16,7 +19,9 @@ import javafx.util.Duration;
 import lk.ijse.ccz.reopsitory.Customer_Repo;
 import lk.ijse.ccz.reopsitory.Order_Repo;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Optional;
@@ -206,6 +211,22 @@ public class DashboardFormController {
         transition.setToX(0);
         transition.play();
 
+    }
+
+
+    @FXML
+    void emailClickOnAction(MouseEvent event) throws IOException {
+        Desktop.getDesktop().browse(URI.create("https://mail.google.com/mail/u/0/#inbox"));
+    }
+
+    @FXML
+    void facebookClickOnAction(MouseEvent event) throws IOException {
+        Desktop.getDesktop().browse(URI.create("https://web.facebook.com/chamuscakeclub"));
+    }
+
+    @FXML
+    void whatsappClickOnAction(MouseEvent event) throws IOException {
+        Desktop.getDesktop().browse(URI.create("https://wa.me/0763055539"));
     }
 }
 

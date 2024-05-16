@@ -7,6 +7,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -58,10 +60,38 @@
                <font>
                   <Font size="14.0" />
                </font></TextField>
-            <Button layoutX="117.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpAddOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Add" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="109.6" />
-            <Button layoutX="348.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpUpdateOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="347.2" />
-            <Button layoutX="590.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpClearOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Clear" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="584.8" />
-            <Button layoutX="662.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpDeleteOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="109.6" />
+            <Button layoutX="117.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpAddOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Add" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="109.6">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../icons/add-user.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button layoutX="348.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpUpdateOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Update" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="347.2">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0">
+                     <image>
+                        <Image url="@../icons/pen.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button layoutX="590.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpClearOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Clear" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="584.8">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@../icons/broom.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button layoutX="662.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnEmpDeleteOnAction" prefHeight="47.0" prefWidth="128.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Delete" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="109.6">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="28.0">
+                     <image>
+                        <Image url="@../icons/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <Label layoutX="468.0" layoutY="41.0" text="Position :">
                <font>
                   <Font size="16.0" />

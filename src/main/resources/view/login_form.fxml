@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -21,8 +23,15 @@
                      </font>
                   </Label>
                   <TextField fx:id="si_userId" layoutX="40.0" layoutY="141.0" onAction="#txtUserIdOnAction" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" stylesheets="@../designs/loginDesign.css" />
-                  <PasswordField fx:id="si_password" layoutX="40.0" layoutY="192.0" onAction="#PasswordFieldOnAction" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@../designs/loginDesign.css" />
-                  <Button fx:id="si_loginBtn" layoutX="40.0" layoutY="261.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="45.0" prefWidth="220.0" styleClass="login-btn" text="Login" />
+                  <PasswordField fx:id="si_password" layoutX="40.0" layoutY="198.0" onAction="#PasswordFieldOnAction" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield" stylesheets="@../designs/loginDesign.css" />
+                  <Button fx:id="si_loginBtn" layoutX="40.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="45.0" prefWidth="220.0" styleClass="login-btn" text="Login">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                           <image>
+                              <Image url="@../icons/enter.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="su_signupForm" layoutX="-6.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@../designs/loginDesign.css">

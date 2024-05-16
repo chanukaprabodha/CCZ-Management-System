@@ -63,6 +63,7 @@ public class LoginFormController {
 
     public static String userId;
 
+
     public static String getUserName(String userId) {
         String sql = "select e.name from employee e join cardinality c on e.employeeId = c.employeeID where userId = ?";
 
@@ -106,13 +107,18 @@ public class LoginFormController {
                 pstm.setObject(3, pw);
                 if (pstm.executeUpdate() > 0) {
                     new Alert(Alert.AlertType.CONFIRMATION,"User Saved...!").show();
+                    clearField();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Try Again...!").show();
             }
-        }else {
-            System.out.println("not saved");
         }
+    }
+
+    private void clearField() {
+        su_EmployeeId.setText("");
+        su_userID.setText("");
+        su_password.setText("");
     }
 
     @FXML

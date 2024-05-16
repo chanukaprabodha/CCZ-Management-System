@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="orderForm" prefHeight="768.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ccz.controller.OrderFormController">
+<AnchorPane fx:id="orderForm" prefHeight="768.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ccz.controller.OrderFormController">
    <children>
       <ScrollPane layoutX="9.0" layoutY="12.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="551.0" AnchorPane.topAnchor="17.0">
          <content>
@@ -211,12 +216,12 @@
             <String fx:value="radius" />
          </styleClass>
          <children>
-            <Label layoutX="7.0" layoutY="63.0" stylesheets="@../designs/mainFormDesign.css" text="Order Id:" AnchorPane.leftAnchor="7.0">
+            <Label layoutX="7.0" layoutY="62.0" stylesheets="@../designs/mainFormDesign.css" text="Order Id:" AnchorPane.leftAnchor="7.0">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblOrderId" layoutX="84.0" layoutY="63.0" prefHeight="21.0" prefWidth="119.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
+            <Label fx:id="lblOrderId" layoutX="84.0" layoutY="62.0" prefHeight="22.0" prefWidth="0.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
                <font>
                   <Font size="15.0" />
                </font>
@@ -238,65 +243,93 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btnConfirm" layoutX="16.0" layoutY="454.0" mnemonicParsing="false" onAction="#btnConfirmOnAction" prefHeight="41.0" prefWidth="290.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Confirm" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-            <Button fx:id="btnRemove" layoutX="106.0" layoutY="679.0" mnemonicParsing="false" onAction="#btnRemoveOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="106.0" />
-            <Button fx:id="btnprintLable" layoutX="173.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnprintLableOnAction" prefHeight="41.0" prefWidth="119.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Print Label" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
+            <Button fx:id="btnConfirm" layoutX="20.0" layoutY="619.8000000000001" mnemonicParsing="false" onAction="#btnConfirmOnAction" prefHeight="41.0" prefWidth="290.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Confirm" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../icons/checked.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnRemove" layoutX="117.0" layoutY="678.0" mnemonicParsing="false" onAction="#btnRemoveOnAction" prefHeight="41.0" prefWidth="125.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Remove" AnchorPane.bottomAnchor="14.800000000000068" AnchorPane.leftAnchor="117.0">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../icons/delete%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnprintLable" layoutX="301.0" layoutY="678.0" mnemonicParsing="false" onAction="#btnprintLableOnAction" prefHeight="41.0" prefWidth="125.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Print Label" AnchorPane.bottomAnchor="14.800000000000068" AnchorPane.rightAnchor="96.60000000000002">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../icons/product-development.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Label layoutX="7.0" layoutY="23.0" text="Order date:">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblOrderDate" layoutX="107.0" layoutY="23.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
+            <Label fx:id="lblOrderDate" layoutX="107.0" layoutY="23.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="110.0">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="270.0" layoutY="39.0" text="Customer :">
+            <Label layoutX="269.0" layoutY="23.0" text="Customer :">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="396.0" layoutY="80.0" onAction="#btnNewCustomerOnAction" prefHeight="30.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="New" textFill="WHITE" AnchorPane.topAnchor="80.0">
+            <JFXButton buttonType="RAISED" layoutX="392.0" layoutY="74.4" onAction="#btnNewCustomerOnAction" prefHeight="35.0" prefWidth="95.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="New" textFill="WHITE" AnchorPane.topAnchor="74.4">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="17.0">
+                     <image>
+                        <Image url="@../icons/icons8-plus-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <TextField fx:id="txtSearchMobile" layoutX="354.0" layoutY="37.0" promptText="Add Customer Mobile" stylesheets="@../designs/mainFormDesign.css" AnchorPane.topAnchor="37.0">
+            <TextField fx:id="txtSearchMobile" layoutX="353.0" layoutY="21.0" promptText="Add Customer Mobile" stylesheets="@../designs/mainFormDesign.css" AnchorPane.topAnchor="21.0">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="radius" />
                   <String fx:value="white-bg" />
                </styleClass>
             </TextField>
-            <JFXButton buttonType="RAISED" layoutX="296.0" layoutY="80.0" onAction="#btnSearchOnAction" prefHeight="30.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Search" textFill="WHITE" AnchorPane.topAnchor="80.0">
+            <JFXButton buttonType="RAISED" layoutX="272.0" layoutY="74.4" onAction="#btnSearchOnAction" prefHeight="35.0" prefWidth="95.0" styleClass="btn" stylesheets="@../designs/mainFormDesign.css" text="Search" textFill="WHITE" AnchorPane.topAnchor="74.4">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <padding>
-                  <Insets left="16.0" />
-               </padding>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0">
+                     <image>
+                        <Image url="@../icons/icons8-search-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <ImageView fitHeight="14.0" fitWidth="17.0" layoutX="409.0" layoutY="88.0">
-               <image>
-                  <Image url="@../icons/icons8-plus-30.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="300.0" layoutY="82.0">
-               <image>
-                  <Image url="@../icons/icons8-search-64.png" />
-               </image>
-            </ImageView>
             <Label layoutX="9.0" layoutY="102.0" text="Customer Id:" AnchorPane.leftAnchor="7.0">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblCustomerId" layoutX="107.0" layoutY="104.0" stylesheets="@../designs/mainFormDesign.css" AnchorPane.leftAnchor="107.0">
+            <Label fx:id="lblCustomerId" layoutX="107.0" layoutY="104.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="110.0">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
          </children>
