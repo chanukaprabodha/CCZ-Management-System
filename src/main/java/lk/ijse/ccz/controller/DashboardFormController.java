@@ -186,7 +186,7 @@ public class DashboardFormController {
     }
 
     @FXML
-    void btnMenuOnAction(ActionEvent event) throws IOException {
+    void btnMenuOnAction(ActionEvent event) throws IOException{
         AnchorPane menuPane = FXMLLoader.load(this.getClass().getResource("/view/order_form.fxml"));
 
         this.centerNode.getChildren().clear();
@@ -200,7 +200,7 @@ public class DashboardFormController {
     }
 
     @FXML
-    void dashBoardOnAction(ActionEvent event) throws IOException {
+    void dashBoardOnAction(ActionEvent event) throws IOException, SQLException {
         FXMLLoader.load(this.getClass().getResource("/view/dashboard_form.fxml"));
 
         this.centerNode.getChildren().clear();
@@ -210,9 +210,14 @@ public class DashboardFormController {
         transition.setFromX(this.centerNode.getScene().getWidth());
         transition.setToX(0);
         transition.play();
+        incomeChart();
+        customerChart();
+        lblNumOfCustomer();
+        lblTodayIncome();
+        lblTotalIncome();
+        lblNumOfTodayOrders();
 
     }
-
 
     @FXML
     void emailClickOnAction(MouseEvent event) throws IOException {

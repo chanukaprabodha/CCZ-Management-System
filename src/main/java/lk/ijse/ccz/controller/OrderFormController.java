@@ -1,11 +1,13 @@
 package lk.ijse.ccz.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -39,10 +41,39 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.lang.Integer.parseInt;
+import static lk.ijse.ccz.reopsitory.Order_Repo.customerChart;
+import static lk.ijse.ccz.reopsitory.Order_Repo.incomeChart;
 import static lk.ijse.ccz.util.SendMail.customerMailAddress;
 import static lk.ijse.ccz.util.SendMail.customerName;
 
 public class OrderFormController {
+
+        @FXML
+        private Button btnTopper;
+
+        @FXML
+        private Button btnVanilla;
+
+        @FXML
+        private Button btnCupCake;
+
+        @FXML
+        private Button btnEssence;
+
+        @FXML
+        private Button btnIcing;
+
+        @FXML
+        private Button btnPacking;
+
+        @FXML
+        private Button btnChocolate;
+
+        @FXML
+        private Button btnCoffee;
+
+        @FXML
+        private Button btnColoring;
 
         @FXML
         private Button btnConfirm;
@@ -110,16 +141,40 @@ public class OrderFormController {
         @FXML
         private Label lblCustomerId;
 
-
         private double netTotal;
 
         private ObservableList<OrderTm> ordertList = FXCollections.observableArrayList();
-
 
         public void initialize() {
                 setCellValueFactory();
                 loadNextOrderId();
                 setDate();
+                Platform.runLater(() -> txtSearchMobile.requestFocus());
+
+
+                List<Node> buttons = Arrays.asList(
+                        txtCoffe, btnCoffee,
+                        txtChocolate, btnChocolate,
+                        txtcoloring, btnColoring,
+                        txtcupcakes, btnCupCake,
+                        txtEssence, btnEssence,
+                        txtPacking, btnPacking,
+                        txtVanilla, btnVanilla,
+                        txtTopper, btnTopper,
+                        txtIcing, btnIcing
+                );
+                buttons.forEach(node -> node.setDisable(true));
+
+                // Add a listener to the search field
+                txtSearchMobile.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (newValue.matches("\\d{10}")) {
+                                // Enable buttons if a valid contact number is entered
+                                buttons.forEach(node -> node.setDisable(false));
+                        } else {
+                                // Disable buttons if the search field is empty or contains an invalid contact number
+                                buttons.forEach(node -> node.setDisable(true));
+                        }
+                });
         }
 
         private void setCellValueFactory() {
@@ -169,12 +224,16 @@ public class OrderFormController {
         void btnSearchOnAction(ActionEvent event) throws SQLException {
                 String mobile = txtSearchMobile.getText();
                 String cusId = Customer_Repo.findCustomer(mobile);
-                lblCustomerId.setText(cusId);
+                if (cusId != null){
+                        lblCustomerId.setText(cusId);
+                }else {
+                        new Alert(Alert.AlertType.ERROR, "Customer Not Found").show();
+                }
         }
 
         @FXML
         void btnCoffeeOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i03";
+                String ing_id = "i003";
                 double qty = Double.parseDouble(txtCoffe.getText());
                 allBtnOnAction(ing_id, qty);
                 txtCoffe.clear();
@@ -183,7 +242,7 @@ public class OrderFormController {
 
         @FXML
         void btnChocolateOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i02";
+                String ing_id = "i002";
                 double qty = Double.parseDouble(txtChocolate.getText());
                 allBtnOnAction(ing_id, qty);
                 txtChocolate.clear();
@@ -218,7 +277,7 @@ public class OrderFormController {
 
         @FXML
         void btnColoringOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i06";
+                String ing_id = "i006";
                 double qty = Double.parseDouble(txtcoloring.getText());
                 allBtnOnAction(ing_id, qty);
                 txtcoloring.clear();
@@ -226,7 +285,7 @@ public class OrderFormController {
 
         @FXML
         void btnCupcakeOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i04";
+                String ing_id = "i004";
                 double qty = Double.parseDouble(txtcupcakes.getText());
                 allBtnOnAction(ing_id, qty);
                 txtcupcakes.clear();
@@ -234,7 +293,7 @@ public class OrderFormController {
 
         @FXML
         void btnEssenceOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i05";
+                String ing_id = "i005";
                 double qty = Double.parseDouble(txtEssence.getText());
                 allBtnOnAction(ing_id, qty);
                 txtEssence.clear();
@@ -243,7 +302,7 @@ public class OrderFormController {
 
         @FXML
         void btnPackingOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i09";
+                String ing_id = "i009";
                 double qty = Double.parseDouble(txtPacking.getText());
                 allBtnOnAction(ing_id, qty);
                 txtPacking.clear();
@@ -251,7 +310,7 @@ public class OrderFormController {
 
         @FXML
         void btnVanillaOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i01";
+                String ing_id = "i001";
                 double qty = Double.parseDouble(txtVanilla.getText());
                 allBtnOnAction(ing_id, qty);
                 txtVanilla.clear();
@@ -260,7 +319,7 @@ public class OrderFormController {
 
         @FXML
         void btnTopperOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i07";
+                String ing_id = "i007";
                 double qty = Double.parseDouble(txtTopper.getText());
                 allBtnOnAction(ing_id, qty);
                 txtTopper.clear();
@@ -269,7 +328,7 @@ public class OrderFormController {
 
         @FXML
         void btnIcingOnAction(ActionEvent event) throws SQLException {
-                String ing_id = "i08";
+                String ing_id = "i008";
                 double qty = Double.parseDouble(txtIcing.getText());
                 allBtnOnAction(ing_id, qty);
                 txtIcing.clear();
@@ -315,17 +374,17 @@ public class OrderFormController {
                                 lblTotal.setText("0");
                                 loadNextOrderId();
                                 
-//                                SendMail sendMail = new SendMail();
-//
-//                                sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
-//                                        "\tThank you for shopping with us. " +
-//                                        "\tYour order is confirmed. " +
-//                                        "\tWe'll let you know when your order is ready\n" +
-//                                        "\n\tOrder Details:\n\n" +
-//                                        "\t\t✅  Placed on :  " + date + "\n\n" +
-//                                        "\t\t✅  Order ID :  " + orderId + "\n\n" +
-//                                        "\t\t✅  Total Amount :  " + totalAmount + "\n" +
-//                                        "\n\n\tSent with ❤️ from CCZ.\n\n");
+                                SendMail sendMail = new SendMail();
+
+                                sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
+                                        "\tThank you for shopping with us. " +
+                                        "\tYour order is confirmed. " +
+                                        "\tWe'll let you know when your order is ready\n" +
+                                        "\n\tOrder Details:\n\n" +
+                                        "\t\t✅  Placed on :  " + date + "\n\n" +
+                                        "\t\t✅  Order ID :  " + orderId + "\n\n" +
+                                        "\t\t✅  Total Amount :  " + totalAmount + "\n" +
+                                        "\n\n\tSent with ❤️ from CCZ.\n\n");
                         } else {
                                 new Alert(Alert.AlertType.WARNING, "order not placed!").show();
                         }
@@ -378,6 +437,11 @@ public class OrderFormController {
         @FXML
         void menuSelectOrder(MouseEvent event) {
 
+        }
+
+        @FXML
+        void txtSearchFieldOnAction(ActionEvent event) throws SQLException {
+                btnSearchOnAction(event);
         }
 
 }

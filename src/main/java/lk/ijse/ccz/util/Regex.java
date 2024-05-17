@@ -25,10 +25,10 @@ public class Regex {
                 field = "^[c][0-9]{3}$";
                 break;
             case STOCK:
-                field = "^([0-9]){1,}$";
+                field = "^\\d{0,8}[.]?\\d{1,4}$";
                 break;
             case PRICE:
-                field = "^([0-9]){1,}$";
+                field = "^\\d{0,8}[.]?\\d{1,4}$";
                 break;
             case Iid:
                 field = "^[i][0-9]{3}$";

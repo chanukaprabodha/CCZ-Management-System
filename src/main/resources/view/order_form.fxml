@@ -31,7 +31,7 @@
                         <String fx:value="shadow" />
                      </styleClass>
                      <children>
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnVanillaOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnVanilla" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnVanillaOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                         <TextField fx:id="txtVanilla" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
                         <ImageView layoutX="83.0" layoutY="35.0">
                            <image>
@@ -62,7 +62,7 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="txtChocolate" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnChocolateOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnChocolate" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnChocolateOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="273.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.leftAnchor="273.0">
@@ -82,7 +82,7 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="txtcupcakes" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnCupcakeOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnCupCake" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnCupcakeOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="273.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.rightAnchor="30.0">
@@ -102,7 +102,7 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="txtcoloring" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnColoringOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnColoring" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnColoringOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="14.0" layoutY="386.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.leftAnchor="20.0">
@@ -122,7 +122,7 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="txtEssence" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEssenceOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnEssence" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEssenceOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="273.0" layoutY="572.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css" AnchorPane.rightAnchor="30.0">
@@ -137,7 +137,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtIcing" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnIcingOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnIcing" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnIcingOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                         <ImageView fitHeight="77.0" fitWidth="81.0" layoutX="70.0" layoutY="36.0">
                            <image>
                               <Image url="@../icons/icons8-icing-96.png" />
@@ -157,7 +157,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtTopper" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnTopperOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnTopper" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnTopperOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                         <ImageView fitHeight="69.0" fitWidth="74.0" layoutX="74.0" layoutY="44.0">
                            <image>
                               <Image url="@../icons/icons8-confetti-80.png" />
@@ -182,7 +182,7 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="txtPacking" layoutX="26.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnPackingOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnPacking" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnPackingOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="20.0" layoutY="198.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="220.0" stylesheets="@../designs/cardDesign.css">
@@ -197,7 +197,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="txtCoffe" layoutX="25.0" layoutY="129.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Button layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnCoffeeOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
+                        <Button fx:id="btnCoffee" layoutX="125.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnCoffeeOnAction" prefHeight="25.0" prefWidth="81.0" styleClass="btn" stylesheets="@../designs/cardDesign.css" text="Add" />
                         <ImageView layoutX="75.0" layoutY="42.0">
                            <image>
                               <Image url="@../icons/icons8-cake-64.png" />
@@ -221,7 +221,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="lblOrderId" layoutX="84.0" layoutY="62.0" prefHeight="22.0" prefWidth="0.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
+            <Label fx:id="lblOrderId" layoutX="84.0" layoutY="62.0" prefHeight="22.0" prefWidth="70.0" stylesheets="@../designs/mainFormDesign.css" textFill="#278d7f" AnchorPane.leftAnchor="107.0">
                <font>
                   <Font size="15.0" />
                </font>
@@ -303,7 +303,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <TextField fx:id="txtSearchMobile" layoutX="353.0" layoutY="21.0" promptText="Add Customer Mobile" stylesheets="@../designs/mainFormDesign.css" AnchorPane.topAnchor="21.0">
+            <TextField fx:id="txtSearchMobile" layoutX="353.0" layoutY="21.0" onAction="#txtSearchFieldOnAction" promptText="Add Customer Mobile" stylesheets="@../designs/mainFormDesign.css" AnchorPane.topAnchor="21.0">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="radius" />

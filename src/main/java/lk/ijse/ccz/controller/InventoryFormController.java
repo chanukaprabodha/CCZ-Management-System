@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,6 +16,7 @@ import lk.ijse.ccz.util.Regex;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class InventoryFormController {
 
@@ -78,6 +76,13 @@ public class InventoryFormController {
                         inventory.getStock(),
                         inventory.getPrice()
                 );
+
+                if(inventory.getStock()<= 2){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Low Stock Warning");
+                    alert.setContentText("Stock of " + inventory.getName() + " is running low! (" + inventory.getStock() + " left)");
+                    alert.showAndWait();
+                }
 
                 tmList.add(inventoryTm);
             }
