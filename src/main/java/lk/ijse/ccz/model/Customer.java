@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Customer {
     private String customerID;
     private String name;
-    private String address;
     private String email;
+    private String address;
     private String contact;
 }

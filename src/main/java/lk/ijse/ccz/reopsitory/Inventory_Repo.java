@@ -12,12 +12,10 @@ import java.util.List;
 
 public class Inventory_Repo {
 
-
     public static boolean save(Inventory inventory) throws SQLException {
         String sql = "INSERT INTO ingredient VALUES(?, ?, ?, ?)";
 
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             pstm.setObject(1, inventory.getId());
             pstm.setObject(2, inventory.getName());
@@ -25,25 +23,25 @@ public class Inventory_Repo {
             pstm.setObject(4, inventory.getPrice());
 
             return pstm.executeUpdate() > 0;
+        }
     }
 
     public static boolean delete(String id) throws SQLException {
         String sql = "DELETE FROM ingredient WHERE ing_id = ?";
 
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             pstm.setObject(1, id);
 
             return pstm.executeUpdate() > 0;
+        }
 
     }
 
     public static boolean update(Inventory inventory) throws SQLException {
         String sql = "UPDATE ingredient SET ing_name = ?, stock = ?, price = ? WHERE ing_id = ?";
 
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             pstm.setObject(1, inventory.getName());
             pstm.setObject(2, inventory.getStock());
@@ -51,6 +49,7 @@ public class Inventory_Repo {
             pstm.setObject(4, inventory.getId());
 
             return pstm.executeUpdate() > 0;
+        }
 
     }
 
@@ -87,13 +86,13 @@ public class Inventory_Repo {
 
     private static boolean updateQty(OrderDetail od) throws SQLException {
         String sql = "UPDATE ingredient SET stock = stock - ? WHERE ing_id = ?";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             pstm.setDouble(1, od.getIngredientQty());
             pstm.setString(2, od.getIngredientId());
 
             return pstm.executeUpdate() > 0;
+        }
 
     }
 

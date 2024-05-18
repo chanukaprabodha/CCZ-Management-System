@@ -378,8 +378,8 @@ public class OrderFormController {
 
                                 sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
                                         "\tThank you for shopping with us. " +
-                                        "\tYour order is confirmed. " +
-                                        "\tWe'll let you know when your order is ready\n" +
+                                        "Your order is confirmed. " +
+                                        "\n\tWe'll let you know when your order is ready 😊\n" +
                                         "\n\tOrder Details:\n\n" +
                                         "\t\t✅  Placed on :  " + date + "\n\n" +
                                         "\t\t✅  Order ID :  " + orderId + "\n\n" +

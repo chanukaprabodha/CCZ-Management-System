@@ -13,8 +13,8 @@ public class Employee_Repo {
 
     public static boolean save(Employee employee) throws SQLException {
         String sql = "INSERT INTO employee VALUES(?, ?, ?, ?,?)";
-        try (PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql)) {
+
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             pstm.setObject(1, employee.getEmployeeID());
             pstm.setObject(2, employee.getName());
@@ -28,8 +28,8 @@ public class Employee_Repo {
 
     public static boolean delete(String id) throws SQLException {
         String sql = "DELETE FROM employee WHERE employeeId = ?";
-        try (PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql)) {
+
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
             pstm.setObject(1, id);
 

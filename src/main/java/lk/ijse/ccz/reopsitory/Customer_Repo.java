@@ -14,48 +14,50 @@ public class Customer_Repo {
 
     public static boolean save(Customer customer) throws SQLException {
         String sql = "INSERT INTO customer VALUES(?, ?, ?, ?,?)";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
 
-        pstm.setObject(1, customer.getCustomerID());
-        pstm.setObject(2, customer.getName());
-        pstm.setObject(3, customer.getEmail());
-        pstm.setObject(4, customer.getAddress());
-        pstm.setObject(5, customer.getContact());
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
-        return pstm.executeUpdate() > 0;
+            pstm.setObject(1, customer.getCustomerID());
+            pstm.setObject(2, customer.getName());
+            pstm.setObject(3, customer.getEmail());
+            pstm.setObject(4, customer.getAddress());
+            pstm.setObject(5, customer.getContact());
+
+            return pstm.executeUpdate() > 0;
+        }
     }
 
     public static boolean update(Customer customer) throws SQLException {
         String sql = "UPDATE customer SET name = ?,email = ?, address = ?, phone = ? WHERE Customerid = ?";
 
-        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
-        pstm.setObject(1, customer.getName());
-        pstm.setObject(2, customer.getEmail());
-        pstm.setObject(3, customer.getAddress());
-        pstm.setObject(4, customer.getContact());
-        pstm.setObject(5, customer.getCustomerID());
+            pstm.setObject(1, customer.getName());
+            pstm.setObject(2, customer.getEmail());
+            pstm.setObject(3, customer.getAddress());
+            pstm.setObject(4, customer.getContact());
+            pstm.setObject(5, customer.getCustomerID());
 
-        return pstm.executeUpdate() > 0;
+            return pstm.executeUpdate() > 0;
+        }
 
     }
 
     public static boolean delete(String id) throws SQLException {
         String sql = "DELETE FROM customer WHERE Customerid = ?";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
 
-        pstm.setObject(1, id);
+        try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
 
-        return pstm.executeUpdate() > 0;
+            pstm.setObject(1, id);
+
+            return pstm.executeUpdate() > 0;
+        }
     }
 
     public static List<Customer> getAll() throws SQLException {
         String sql = "SELECT * FROM customer";
 
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
+        PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
         ResultSet resultSet = pstm.executeQuery();
 
@@ -142,26 +144,4 @@ public class Customer_Repo {
         }
         return null;
     }
-
-    /*public static Customer searchById(String cusId) throws SQLException {
-        String sql = "SELECT * FROM customer WHERE customerId = ?";
-        PreparedStatement pstm = DbConnection.getInstance().getConnection()
-                .prepareStatement(sql);
-
-        pstm.setObject(1, cusId);
-        ResultSet resultSet = pstm.executeQuery();
-
-        Customer customer = null;
-
-        if (resultSet.next()) {
-            String cus_id = resultSet.getString(1);
-            String name = resultSet.getString(2);
-            String email = resultSet.getString(3);
-            String address = resultSet.getString(4);
-            String contact = resultSet.getString(5);
-
-            customer = new Customer(cus_id, name, email,address, contact);
-        }
-        return customer;
-    }*/
 }
