@@ -45,7 +45,7 @@ public class SendMail {
 
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory) throws IOException {
         // Load client secrets.
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(SendMail.class.getResourceAsStream("/client_secret_71107780755-dpogf67snt43oqg2h4p3494c27j54kkc.apps.googleusercontent.com.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(SendMail.class.getResourceAsStream("/client_secret_71107780755-8sc89799utsggs78gb9dtglcoakkgo64.apps.googleusercontent.com.json")));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(

@@ -211,9 +211,6 @@ public class InventoryFormController {
         if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.Iid,txtProductID)) {
             return false;
         }
-        if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.NAME,txtProductName)) {
-            return false;
-        }
         if (!Regex.setTextColor(lk.ijse.ccz.util.TextField.STOCK,txtStock)) {
             return false;
         }

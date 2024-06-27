@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class Launcher extends Application {
 
+    @Override
     public void start(Stage stage) throws IOException {
        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashboard_form.fxml"));
 
