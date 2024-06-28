@@ -39,13 +39,13 @@ public class SendMail {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jasonFactory = GsonFactory.getDefaultInstance();
          service = new Gmail.Builder(httpTransport, jasonFactory, getCredentials(httpTransport, jasonFactory))
-                .setApplicationName("CCZ")
+                .setApplicationName("CCZManagement")
                 .build();
     }
 
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory) throws IOException {
         // Load client secrets.
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(SendMail.class.getResourceAsStream("/client_secret_71107780755-8sc89799utsggs78gb9dtglcoakkgo64.apps.googleusercontent.com.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(SendMail.class.getResourceAsStream("/client_secret_541077520352-0ev44c6jvkod3puleso62oh6sun3rtgr.apps.googleusercontent.com.json")));
 
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
@@ -63,7 +63,7 @@ public class SendMail {
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress(cczMail));
-        email.addRecipient(TO, new InternetAddress(customerMailAddress));
+        email.addRecipient(TO, new InternetAddress("chanugamage02@gmail.com"));
         email.setSubject(subject);
         email.setText(message);
 
@@ -78,8 +78,8 @@ public class SendMail {
         try {
             // Create send message
             msg = service.users().messages().send("me", msg).execute();
-//            System.out.println("Message id: " + msg.getId());
-//            System.out.println(msg.toPrettyString());
+            System.out.println("Message id: " + msg.getId());
+            System.out.println(msg.toPrettyString());
         } catch (GoogleJsonResponseException e) {
             GoogleJsonError error = e.getDetails();
             if (error.getCode() == 403) {

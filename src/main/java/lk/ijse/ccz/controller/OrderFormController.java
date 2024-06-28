@@ -373,7 +373,6 @@ public class OrderFormController {
                                 txtSearchMobile.clear();
                                 lblTotal.setText("0");
                                 loadNextOrderId();
-                                
                                 SendMail sendMail = new SendMail();
 
                                 sendMail.sendMail("Chamu Cake Zone Order Confirmation", "Hi " + customerName + ",\n\n" +
